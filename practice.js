@@ -47,4 +47,42 @@ function invertBinaryTree(tree) {
       this.right = null;
     }
   }
+
+
+  //Write a function that takes in an array of integers and returns an array
+  //of length 2 representing the largest range of integers conatined in that array
+  function largestRange(array) {
+    
+      let bestRange = [];
+      let longestLength = 0;
+      const nums = {};
+      for(const num of array) {
+          nums[num] = true;
+      }
+      for(const num of array) {
+          if(!nums[num]) continue;
+          nums[num] = false;
+          //split the array
+          let currentLength = 1;
+          let left = num -1;
+          let right = num + 1;
+          //check left side
+          while(left in nums){
+              nums[left] = false;
+              currentLength++;
+              left--
+          }
+          //check right side
+          while(right in nums) {
+              nums[right] = false;
+              currentLength++
+              right++
+          }
+          if(currentLength > longestLength){
+              longestLength = currentLength;
+              bestRange = [left + 1, right -1];
+          }
+      }
+       return bestRange;
+  }
   
