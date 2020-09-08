@@ -125,3 +125,29 @@ function invertBinaryTree(tree) {
       array[i] = temp;
   }
   
+
+  //Write a function that takes in a string made of brackets ((, [, {, ), ], })
+  //Function should return boolean if string is balanced in regards to brackets
+  //Balanced means has as many opening brackets as it does closing that matches
+
+  function balancedBrackets(string) {
+    const open = '([{';
+      const closing = ')]}';
+      const matching = {')': '(', ']': '[', '}': '{'};
+      const stack = [];
+      for(const char of string) {
+          if(open.includes(char)) {
+              stack.push(char);
+          } else if (closing.includes(char)){
+              if(stack.length == 0) {
+                  return false;
+              }
+              if(stack[stack.length - 1] === matching[char]) {
+                  stack.pop();
+              } else {
+                  return false;
+              }
+          }
+      }
+      return stack.length === 0;
+  }
