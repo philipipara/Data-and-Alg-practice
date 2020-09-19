@@ -230,3 +230,29 @@ function shiftAndUpdate(array, num, idx) {
 	}
 }
   
+
+//use bubble sort to take an array and sort the numbers
+
+function bubbleSort(array) {
+    let isSorted = false;
+      //counter helps keep track if highest number so does not have to keep iterating through the full array
+      let counter = 0;
+      while(!isSorted){
+          isSorted = true;
+          for(let i = 0; i < array.length - 1 - counter; i++) {
+              if(array[i] > array[i + 1]){
+                  swap(i, i + 1, array);
+                  isSorted = false;
+              }
+          }
+          counter++;
+      }
+        return array;
+  }
+   //helper to swap numbers in array to sort 
+  function swap(i, j, array){
+      const temp = array[j];
+      array[j] = array[i];
+      array[i] = temp;
+  }
+  
