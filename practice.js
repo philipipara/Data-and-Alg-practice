@@ -274,3 +274,23 @@ function bubbleSort(array) {
       array[j] = array[i]
       array[i] = temp;
   }
+
+
+//Given a two-dimensioal array with distinct integers and a target number.
+//The rows and cols are already sorted. Write a function that returns a given
+//target number, if the target number is not in the matrix return [-1, -1]
+
+function searchMatrix(matrix, target) {
+    let row = 0;
+      let col = matrix[0].length -1;
+      while (row < matrix.length && col >= 0) {
+          if(matrix[row][col] > target) {
+              col--
+          } else if(matrix[row][col] < target){
+              row++
+          } else {
+              return [row, col]
+          }
+      }
+      return [-1, -1]
+  }
