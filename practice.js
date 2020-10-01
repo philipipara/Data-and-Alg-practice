@@ -294,3 +294,20 @@ function searchMatrix(matrix, target) {
       }
       return [-1, -1]
   }
+
+
+//Given an array of distinct pos. integers representing coin denominations and single non-negative integer n
+//representing a target amount of money write a function that returns number of ways to make change for that target number
+
+  function numberOfWaysToMakeChange(n, denoms) {
+    const ways = new Array(n + 1).fill(0);
+      ways[0] = 1;
+      for(let denom of denoms){
+              for(let amount = 1; amount < n + 1; amount++){
+                  if(denom <= amount) {
+                      ways[amount] += ways[amount - denom];
+                  }
+              }
+          }
+       return ways[n];
+  }
