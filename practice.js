@@ -311,3 +311,18 @@ function searchMatrix(matrix, target) {
           }
        return ways[n];
   }
+
+//Kadane Algorithm
+//Write a function that takes in a nonempty array of integers and returns the max sum
+//that can be obtained by summing all int's in a subarray of the input array.
+
+  function kadanesAlgorithm(array) {
+    let maxEndingHere = array[0];
+      let maxSoFar = array[0];
+      for(let i = 1; i < array.length; i++){
+          const num = array[i];
+          maxEndingHere = Math.max(num, maxEndingHere + num);
+          maxSoFar = Math.max(maxSoFar, maxEndingHere);
+      }
+      return maxSoFar;
+  }
