@@ -326,3 +326,17 @@ function searchMatrix(matrix, target) {
       }
       return maxSoFar;
   }
+
+  //Given two arrays determine if the second is a sub sequence of the first array
+
+  function isValidSubsequence(array, sequence) {
+  
+      let arrI = 0;
+      let seqI = 0;
+      while(arrI < array.length && seqI < sequence.length) {
+          if(array[arrI] === sequence[seqI]) seqI++;
+          arrI++;
+      }
+      return seqI === sequence.length;
+  }
+  
