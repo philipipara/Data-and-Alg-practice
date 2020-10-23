@@ -368,4 +368,25 @@ function searchMatrix(matrix, target) {
       this.right = null;
     }
   }
+
+//Given an array of integers and an integer write a function that given all occurences of that integer
+//and moves it to the end of the array, and return array.
+
+  function moveElementToEnd(array, toMove) {
+    let i = 0;
+      let j = array.length - 1;
+      while(i < j) {
+          while (i < j && array[j] === toMove) j--;
+          if (array[i] === toMove) swap(i, j, array);
+          i++
+      }
+      return array;
+  }
+  
+  function swap(i, j, array){
+      const temp = array[j];
+      array[j] = array[i];
+      array[i] = temp;
+  }
+  
   
